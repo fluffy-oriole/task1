@@ -4,7 +4,11 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            Console.Write("Введите число для преобразования: ");
+            int num = int.Parse(Console.ReadLine());
+            int rub = num / 100;
+            int cents = num % 100;
+            Console.Write(rub.ToString() + " руб. " + cents + " копеек");
         }
     }
 }
