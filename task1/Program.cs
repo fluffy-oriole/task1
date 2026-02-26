@@ -7,25 +7,37 @@
             int rub = num / 100;
             int cents = num % 100;
             String answer = rub.ToString();
-            if (cents == 0)
+            if (rub % 10 == 1)
             {
-                answer += " руб. ровно";
+                answer += " рубль ";
             }
-            else if (cents > 10 && cents < 20)
+            else if (rub % 10 >= 2 && rub % 10 <= 4)
             {
-                answer += (" руб. " + cents.ToString() + " копеек");
-            }
-            else if (cents % 10 == 1)
-            {
-                answer += (" руб. " + cents.ToString() + " копейка");
-            }
-            else if (cents % 10 > 1 && cents % 10 < 5)
-            {
-                answer += (" руб. " + cents.ToString() + " копейки");
+                answer += " рубля ";
             }
             else
             {
-                answer += " руб. " + (cents.ToString() + " копеек");
+                answer += " рублей ";
+            }
+            if (cents == 0)
+            {
+                answer += "ровно";
+            }
+            else if (cents > 10 && cents < 20)
+            {
+                answer += (cents.ToString() + " копеек");
+            }
+            else if (cents % 10 == 1)
+            {
+                answer += (cents.ToString() + " копейка");
+            }
+            else if (cents % 10 > 1 && cents % 10 < 5)
+            {
+                answer += (cents.ToString() + " копейки");
+            }
+            else
+            {
+                answer += (cents.ToString() + " копеек");
             }
             return answer;
         }
