@@ -2,33 +2,32 @@
 {
     public class Logic
     {
-        public static int[] GetRubCents(int num) {
+        public static String GetRubCents(int num)
+        {
             int rub = num / 100;
             int cents = num % 100;
-            return [rub, cents];
-        }
-        public static String GetCentsWord(int cents)
-        {
+            String answer = rub.ToString();
             if (cents == 0)
             {
-                return " ровно";
+                answer += " руб. ровно";
             }
             else if (cents > 10 && cents < 20)
             {
-                return (cents.ToString() + " копеек");
+                answer += (" руб. " + cents.ToString() + " копеек");
             }
             else if (cents % 10 == 1)
             {
-                return (cents.ToString() + " копейка");
+                answer += (" руб. " + cents.ToString() + " копейка");
             }
             else if (cents % 10 > 1 && cents % 10 < 5)
             {
-                return (cents.ToString() + " копейки");
+                answer += (" руб. " + cents.ToString() + " копейки");
             }
             else
             {
-                return (cents.ToString() + " копеек");
+                answer += " руб. " + (cents.ToString() + " копеек");
             }
+            return answer;
         }
     }
     internal class Program
@@ -37,9 +36,8 @@
         {
             Console.Write("Введите число для преобразования: ");
             int num = int.Parse(Console.ReadLine());
-            int rub = Logic.GetRubCents(num)[0];
-            int cents = Logic.GetRubCents(num)[1];
-            Console.Write(rub.ToString() + " руб. " + Logic.GetCentsWord(cents));
+            String answer = Logic.GetRubCents(num);
+            Console.Write(answer);
         }
     }
 }
